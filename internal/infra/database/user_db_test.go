@@ -30,11 +30,7 @@ func TestCreateUser(t *testing.T) {
 	assert.NotNil(t, userFound.Password)
 }
 
-<<<<<<< Updated upstream
 func TestFindByEmail(t *testing.T){
-=======
-func TestFindByEmail(t *testing.T) {
->>>>>>> Stashed changes
 	db, err := gorm.Open(mysql.Open("root:@tcp(127.0.0.1:3306)/api_go_expert"), &gorm.Config{})
 	if err != nil {
 		t.Error(err)
@@ -52,8 +48,4 @@ func TestFindByEmail(t *testing.T) {
 	assert.Equal(t, user.Name, userFound.Name)
 	assert.Equal(t, user.Email, userFound.Email)
 	assert.NotNil(t, userFound.Password)
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
