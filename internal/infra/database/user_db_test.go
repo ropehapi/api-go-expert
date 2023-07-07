@@ -10,7 +10,7 @@ import (
 )
 
 func TestCreateUser(t *testing.T) {
-	db, err := gorm.Open(mysql.Open("root:@tcp(127.0.0.1:3306)/api_go_expert"), &gorm.Config{})
+	db, err := gorm.Open(mysql.Open("root:@tcp(127.0.0.1:3306)/db_api_go_expert"), &gorm.Config{})
 	if err != nil {
 		t.Error(err)
 	}
@@ -31,7 +31,7 @@ func TestCreateUser(t *testing.T) {
 }
 
 func TestFindByEmail(t *testing.T){
-	db, err := gorm.Open(mysql.Open("root:@tcp(127.0.0.1:3306)/api_go_expert"), &gorm.Config{})
+	db, err := gorm.Open(mysql.Open("root:@tcp(127.0.0.1:3306)/db_api_go_expert"), &gorm.Config{})
 	if err != nil {
 		t.Error(err)
 	}

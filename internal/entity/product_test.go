@@ -33,10 +33,9 @@ func TestProductWhenPriceIsInvalid(t *testing.T) {
 	assert.Equal(t, ErrInvalidPrice, err)
 }
 
-func TestProductValidate(t *testing.T){
+func TestProductValidate(t *testing.T) {
 	p, err := NewProduct("Astra 2.0", 23000)
 	assert.Nil(t, err)
 	assert.NotNil(t, p)
 	assert.Nil(t, p.Validate())
 }
-
