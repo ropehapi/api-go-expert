@@ -18,7 +18,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	db, err := gorm.Open(mysql.Open("root:@tcp(127.0.0.1:3306)/db_api_go_expert"), &gorm.Config{})
+	db, err := gorm.Open(mysql.Open("root:@tcp(127.0.0.1:3306)/db_api_go_expert?parseTime=true"), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}
@@ -28,7 +28,9 @@ func main() {
 
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
+	r.Get("/product/{id}", productHandler.GetProduct)
 	r.Post("/products", productHandler.CreateProduct)
+	r.Put("/product/{id}", productHandler.UpdateProduct)
 
 	http.ListenAndServe(":8000", r)
 }
