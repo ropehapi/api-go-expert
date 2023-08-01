@@ -1,0 +1,8 @@
+POST http://127.0.0.1:8000/user HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Pedro Yoshimura",
+    "email": "ropehapi@gmail.com",
+    "password": "Pedroka0123"
+}
