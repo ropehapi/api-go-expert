@@ -6,3 +6,12 @@ Content-Type: application/json
     "email": "ropehapi@gmail.com",
     "password": "Pedroka0123"
 }
+
+###
+POST http://127.0.0.1:8000/users/generate_token HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "ropehapi@gmail.com",
+    "password": "Pedroka0123"
+}
