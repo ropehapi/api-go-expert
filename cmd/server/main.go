@@ -8,13 +8,27 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/jwtauth"
 	"github.com/ropehapi/api-go-expert/configs"
+	_ "github.com/ropehapi/api-go-expert/docs"
 	"github.com/ropehapi/api-go-expert/internal/entity"
 	"github.com/ropehapi/api-go-expert/internal/infra/database"
 	"github.com/ropehapi/api-go-expert/internal/infra/webserver/handlers"
+	httpSwagger "github.com/swaggo/http-swagger"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
+//@title API Go Expert
+//@version 1.0
+//@desciption API desenvolvida durante o curso GoExpert
+
+//@contact.name Pedro Yoshimura
+//@contact.email ropehapi@gmail.com
+
+// @host 127.0.0.1:8000
+// @BasePath /
+// @securityDefinitions.apiKey ApiKeyAuth
+// @in header
+// @name Authorization
 func main() {
 	configs, err := configs.LoadConfig(".")
 	if err != nil {
@@ -35,7 +49,7 @@ func main() {
 	r.Use(middleware.Recoverer)
 	r.Use(LogRequest)
 
-	r.Route("/product", func(r chi.Router)  {
+	r.Route("/products", func(r chi.Router) {
 		r.Use(jwtauth.Verifier(configs.TokenAuth))
 		r.Use(jwtauth.Authenticator)
 
@@ -43,11 +57,13 @@ func main() {
 		r.Get("/", productHandler.GetProducts)
 		r.Get("/{id}", productHandler.GetProduct)
 		r.Put("/{id}", productHandler.UpdateProduct)
-		r.Delete("/{id}", productHandler.DeleteProduct)	
+		r.Delete("/{id}", productHandler.DeleteProduct)
 	})
 
 	r.Post("/users/generate_token", userHandler.GetJWT)
 	r.Post("/user", userHandler.Create)
+
+	r.Get("/docs/*", httpSwagger.Handler(httpSwagger.URL("http://127.0.0.1:8000/docs/doc.json")))
 
 	http.ListenAndServe("127.0.0.1:8000", r)
 }
