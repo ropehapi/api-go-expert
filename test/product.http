@@ -1,4 +1,4 @@
-POST http://127.0.0.1:8000/products HTTP/1.1
+POST http://127.0.0.1:8000/product HTTP/1.1
 Content-Type: application/json
 
 {
@@ -22,4 +22,5 @@ Content-Type: application/json
 DELETE http://127.0.0.1:8000/product/8306f21d-4f5a-497b-a27d-31b336fa00fb HTTP/1.1
 
 ###
-GET http://127.0.0.1:8000/products HTTP/1.1
+GET http://127.0.0.1:8000/product HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTA5MzUwMzYsInN1YiI6ImE5Zjk1YTljLTNhMTktNDAzMi04ODg5LTZlYjYxM2NiZTU0NiJ9.1ma-KBlFkB2R24ByT693aBnEhHNGgkZitlmdwnxo5Y4
